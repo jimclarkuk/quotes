@@ -1,16 +1,17 @@
 package controllers;
 
-import java.util.List;
+import javax.persistence.Query;
 
 import models.Quote;
 import play.mvc.Controller;
 
 public class RandomQuote extends Controller {
 
-	public static void showRandom(){
-		double rnd = Math.random();
-    	List<Quote> quotes = Quote.findAll();
-    	Quote quote = quotes.get((int)Math.abs(quotes.size()*rnd));
-    	render(quote);
+	public static void showRandom() {
+		Query q = Quote.getEntityManager().createQuery(
+				"from Quote as quot ORDER BY RAND()");
+		q.setMaxResults(1);
+		Quote quote = (Quote) q.getSingleResult();
+		render(quote);
 	}
 }
