@@ -1,0 +1,20 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if quotes}
+	#{list items:quotes, as:'quote'}
+		#{display quote:quote /}
+	#{/list}
+#{/if}
+
+<h3>Add a quote</h3>
+ 
+#{form @Application.addQuote()}
+    <p>
+        <label for="content">Your quote: </label>
+        <textarea name="content" id="content"></textarea>
+    </p>
+    <p>
+        <input type="submit" value="Submit your quote" />
+    </p>
+#{/form}
