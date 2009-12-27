@@ -8,8 +8,7 @@ import play.mvc.Controller;
 public class RandomQuote extends Controller {
 
 	public static void showRandom() {
-		Query q = Quote.getEntityManager().createQuery(
-				"from Quote as quot ORDER BY RAND()");
+		Query q = Quote.em().createQuery("from Quote as quot ORDER BY RAND()");
 		q.setMaxResults(1);
 		Quote quote = (Quote) q.getSingleResult();
 		render(quote);

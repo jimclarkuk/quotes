@@ -15,4 +15,8 @@ public class Quote extends Model {
 	public Quote(String theQuote) {
 		text = theQuote;
 	}
+	
+	public static Quote findQuote(String text){
+		return Quote.find("byText", text).first();
+	}
 }

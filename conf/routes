@@ -5,8 +5,11 @@
 # Home page
 GET     /                                       Application.index
 
-# Home page
+# Random quote page
 GET     /rnd                                    RandomQuote.showRandom
+
+# Random quote page
+GET     /del                                    DeleteQuote.showDeleteForm
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

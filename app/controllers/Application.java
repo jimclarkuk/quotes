@@ -14,7 +14,7 @@ public class Application extends Controller {
     }
     
     public static void addQuote(@Required String content){
-    	if(Quote.find("from Quote as quote where quote.text like '"+"content"+"'") != null){
+    	if(Quote.find("byText", content).first() != null){
     		new Quote(content).save();
     	}
     	index();
